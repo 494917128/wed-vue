@@ -17,7 +17,7 @@
 ``` bash
 <template>
   ...
-    <wed-loading :data="loading"></wed-loading>
+    <wed-modal :data="modal"></wed-modal>
   ...
 </template>
 
@@ -27,17 +27,17 @@ import { api } from "vue-wed-dev";
 ...
   data() {
     return {
-      loading: {}
+      modal: {}
     };
   },
 ...
   created() {
-    api.loadingInit(this, "loading");
+    api.modalInit(this, "modal");
   }
 ...
 ```
 
-## api.modalInit(Object object)
+## api.showModal(Object object)
 
 #### 显示模态框
 
@@ -62,7 +62,7 @@ import { api } from "vue-wed-dev";
 ``` bash
 <template>
   ...
-    <wed-loading :data="loading"></wed-loading>
+    <wed-modal :data="modal"></wed-modal>
 
     <div @click="showModal">显示模态框</div>
   ...
@@ -89,7 +89,41 @@ import { api } from "vue-wed-dev";
 ...
 ```
 
+## api.confirm(msg, callback)
 
+#### 显示提示框（点确定关闭）
+
+#### 参数
+
+| 参数名 | 类型 | 默认值 | 是否必填 | 描述 |
+| --- | --- | --- | --- | --- |
+| msg | String |  | 可选 | 提示内容 |
+| callback | function |  | 可选 | 点击确定后执行 |
+
+#### 示例
+
+``` bash
+<template>
+  ...
+    <wed-modal :data="modal"></wed-modal>
+
+    <div @click="confirm">显示提示框</div>
+  ...
+</template>
+
+<script>
+import { api } from "vue-wed-dev";
+
+...
+  methods: {
+    confirm() {
+      api.confirm('提示测试', ()=>{
+        console.log('点击确定')
+      });
+    }
+  },
+...
+```
 
 # 相关组件
 - [wed-modal](/docs/components/wed-modal.md)
