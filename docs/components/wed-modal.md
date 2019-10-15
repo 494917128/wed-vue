@@ -65,6 +65,6 @@ export default {
 </script>
 ```
 
-#### [相关方法](/docs/mothods/modal.md)
+#### [相关方法](/docs/methods/modal.md)
 - modalInit
 - showModal

@@ -59,7 +59,7 @@ export default {
 </script>
 ```
 
-#### [相关方法](/docs/mothods/loading.md)
+#### [相关方法](/docs/methods/loading.md)
 - loadingInit
 - showLoading
 - hideLoading

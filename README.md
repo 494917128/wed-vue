@@ -19,9 +19,9 @@ npm install vue-wed-dev --save
 
 # 方法
 
-- [模态框](/docs/mothods/modal.md)
-- [提示框](/docs/mothods/toast.md)
-- [loading框](/docs/mothods/loading.md)
+- [模态框](/docs/methods/modal.md)
+- [提示框](/docs/methods/toast.md)
+- [loading框](/docs/methods/loading.md)
 
 # 作者
 王尔迪

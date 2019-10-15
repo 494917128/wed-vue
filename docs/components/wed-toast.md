@@ -56,6 +56,6 @@ export default {
 </script>
 ```
 
-#### [相关方法](/docs/mothods/toast.md)
+#### [相关方法](/docs/methods/toast.md)
 - toastInit
 - showToast
