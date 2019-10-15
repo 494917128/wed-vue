@@ -3,16 +3,14 @@
 
 ## api.modalInit(event, name)
 
+#### 初始化模态框
+
 #### 参数
 
 | 参数名 | 类型 | 是否必填 | 描述 |
 | --- | --- | --- | --- |
 | event | Object | 必填 | 当前vue实例 |
 | name | String | 必填 | 绑定数据的类型名 |
-
-#### 介绍
-
-- 初始化模态框
 
 #### 示例
 
@@ -41,6 +39,8 @@ import { api } from "vue-wed-dev";
 
 ## api.modalInit(Object object)
 
+#### 显示模态框
+
 #### 参数
 ##### Object object
 
@@ -56,9 +56,6 @@ import { api } from "vue-wed-dev";
 | fail | function |  | 可选 | 接口调用失败的回调函数 |
 | complete | function |  | 可选 | 接口调用结束的回调函数（调用成功、失败都会执行） |
 
-#### 介绍
-
-- 显示模态框
 
 #### 示例
 
