@@ -1,56 +1,192 @@
-## 模块开发流程
 
-目录
+# 模态框方法
 
-- 创建/维护
-- 权限
-- 继承的基类说明
-- 开发
+## api.toastInit(event, name)
 
-### 创建/维护
+#### 初始化提示框
 
-进入后台 - 系统管理 - 系统功能 - 应用管理 - 设计新插件
+#### 参数
 
-> 创建成功后会在 根目录的 addons 目录下生成插件文件
+| 参数名 | 类型 | 是否必填 | 描述 |
+| --- | --- | --- | --- |
+| event | Object | 必填 | 当前vue实例 |
+| name | String | 必填 | 绑定数据的类型名 |
 
-### 权限
+#### 示例
 
-权限请在创建的模块下的 AddonConfig 文件内手动填写，安装后会自动注册进系统权限管理
+``` bash
+<template>
+  ...
+    <wed-toast :data="toast"></wed-toast>
+  ...
+</template>
 
-例如：
+<script>
+import { api } from "vue-wed-dev";
 
+...
+  data() {
+    return {
+      toast: {}
+    };
+  },
+...
+  created() {
+    api.toastInit(this, "toast");
+  }
+...
 ```
-    /**
-     * 可授权权限
-     *
-     * 例子：
-     *  array(
-     *      'index/index' => '首页',
-     *      'index/edit' => '首页编辑',
-     *  )
-     * @var array
-     */
-    public $authItem = [
-        'curd/index' => 'Curd首页',
-        'curd/edit' => 'Curd编辑',
-    ];
+
+## api.showToast(Object object)
+
+#### 显示提示框
+
+#### 参数
+##### Object object
+
+| 参数名 | 类型 | 默认值 | 是否必填 | 描述 |
+| --- | --- | --- | --- | --- |
+| text | String |  | 必填 | 提示框内容 |
+| type | String |  | 可选 | error：失败；success：成功；其他：提示框 |
+| time | Number | 2000 | 可选 | 提示框显示多长时间自动关闭 |
+
+#### 示例
+
+``` bash
+<template>
+  ...
+    <wed-toast :data="toast"></wed-toast>
+
+    <div @click="showToast">显示提示框</div>
+  ...
+</template>
+
+<script>
+import { api } from "vue-wed-dev";
+
+...
+  methods: {
+    showToast() {
+      api.showToast({
+        text: "成功",
+        type: "success",
+        time: 2000
+      });
+    }
+  },
+...
 ```
 
-查看设置权限：系统管理->用户权限->角色管理->创建/编辑
+## api.alert(msg, callback)
 
-### 继承的基类说明
+#### 显示提示框（默认，1.5s自动关闭）
 
-##### api
+#### 参数
+##### Object object
 
-> 注意：开发Api的时候能使用RESTful的基类，但是不受路由规则管辖
+| 参数名 | 类型 | 默认值 | 是否必填 | 描述 |
+| --- | --- | --- | --- | --- |
+| msg | String |  | 必填 | 提示框内容 |
+| callback | function |  | 可选 | 提示框隐藏时执行（1.5s后） |
 
-- 控制器请全部继承 `api\controllers\OnAuthController`,注意Curd是改过的，不想用系统的Curd可直接继承 `api\controllers\ActiveController`，如果设置控制器内方法不需要验证请设置 `optional` 属性
-- 用户私有控制器请全部继承 `api\controllers\UserAuthController`
+#### 示例
 
-##### 其他(wechat/backend/frontend)
+``` bash
+<template>
+  ...
+    <wed-toast :data="toast"></wed-toast>
 
-控制器需统一继承 `common\components\AddonsBaseController`  
+    <div @click="alert">显示提示框</div>
+  ...
+</template>
 
-### 开发
+<script>
+import { api } from "vue-wed-dev";
 
-完全可以根据Yii2正常的开发流程去开发对应的控制器、视图、插件内的应用
+...
+  methods: {
+    alert() {
+      api.alert("测试", ()=>{
+        console.log('隐藏执行')
+      });
+    }
+  },
+...
+```
+
+## api.error(msg, callback)
+
+#### 显示提示框（失败，1.5s自动关闭）
+
+#### 参数
+##### Object object
+
+| 参数名 | 类型 | 默认值 | 是否必填 | 描述 |
+| --- | --- | --- | --- | --- |
+| msg | String |  | 必填 | 提示框内容 |
+| callback | function |  | 可选 | 提示框隐藏时执行（1.5s后） |
+
+#### 示例
+
+``` bash
+<template>
+  ...
+    <wed-toast :data="toast"></wed-toast>
+
+    <div @click="error">显示提示框</div>
+  ...
+</template>
+
+<script>
+import { api } from "vue-wed-dev";
+
+...
+  methods: {
+    error() {
+      api.error("失败", ()=>{
+        console.log('隐藏执行')
+      });
+    }
+  },
+...
+```
+
+## api.success(msg, callback)
+
+#### 显示提示框（成功，1.5s自动关闭）
+
+#### 参数
+##### Object object
+
+| 参数名 | 类型 | 默认值 | 是否必填 | 描述 |
+| --- | --- | --- | --- | --- |
+| msg | String |  | 必填 | 提示框内容 |
+| callback | function |  | 可选 | 提示框隐藏时执行（1.5s后） |
+
+#### 示例
+
+``` bash
+<template>
+  ...
+    <wed-toast :data="toast"></wed-toast>
+
+    <div @click="success">显示提示框</div>
+  ...
+</template>
+
+<script>
+import { api } from "vue-wed-dev";
+
+...
+  methods: {
+    success() {
+      api.success("失败", ()=>{
+        console.log('隐藏执行')
+      });
+    }
+  },
+...
+```
+
+# 相关组件
+- [wed-toast](/docs/components/wed-toast.md)

@@ -1,56 +1,82 @@
-## 模块开发流程
 
-目录
+# 模态框方法
 
-- 创建/维护
-- 权限
-- 继承的基类说明
-- 开发
+## api.loadingInit(event, name)
 
-### 创建/维护
+#### 初始化模态框
 
-进入后台 - 系统管理 - 系统功能 - 应用管理 - 设计新插件
+#### 参数
 
-> 创建成功后会在 根目录的 addons 目录下生成插件文件
+| 参数名 | 类型 | 是否必填 | 描述 |
+| --- | --- | --- | --- |
+| event | Object | 必填 | 当前vue实例 |
+| name | String | 必填 | 绑定数据的类型名 |
 
-### 权限
+#### 示例
 
-权限请在创建的模块下的 AddonConfig 文件内手动填写，安装后会自动注册进系统权限管理
+``` bash
+<template>
+  ...
+    <wed-loading :data="loading"></wed-loading>
+  ...
+</template>
 
-例如：
+<script>
+import { api } from "vue-wed-dev";
 
+...
+  data() {
+    return {
+      loading: {}
+    };
+  },
+...
+  created() {
+    api.loadingInit(this, "loading");
+  }
+...
 ```
-    /**
-     * 可授权权限
-     *
-     * 例子：
-     *  array(
-     *      'index/index' => '首页',
-     *      'index/edit' => '首页编辑',
-     *  )
-     * @var array
-     */
-    public $authItem = [
-        'curd/index' => 'Curd首页',
-        'curd/edit' => 'Curd编辑',
-    ];
+
+## api.showLoading(text)
+
+#### 显示loading框
+
+#### 参数
+
+| 参数名 | 类型 | 默认值 | 是否必填 | 描述 |
+| --- | --- | --- | --- | --- |
+| text | String |  | 必填 | loading文字内容 |
+
+## api.hideLoading()
+
+#### 隐藏loading框
+
+#### 示例
+
+``` bash
+<template>
+  ...
+    <wed-loading :data="loading"></wed-loading>
+
+    <div @click="showLoading">显示loading框</div>
+  ...
+</template>
+
+<script>
+import { api } from "vue-wed-dev";
+
+...
+  methods: {
+    showLoading() {
+      api.showLoading("加载中");
+      setTimeout(()=>{
+        api.hideLoading();
+      },1500)
+    }
+  },
+...
 ```
 
-查看设置权限：系统管理->用户权限->角色管理->创建/编辑
 
-### 继承的基类说明
-
-##### api
-
-> 注意：开发Api的时候能使用RESTful的基类，但是不受路由规则管辖
-
-- 控制器请全部继承 `api\controllers\OnAuthController`,注意Curd是改过的，不想用系统的Curd可直接继承 `api\controllers\ActiveController`，如果设置控制器内方法不需要验证请设置 `optional` 属性
-- 用户私有控制器请全部继承 `api\controllers\UserAuthController`
-
-##### 其他(wechat/backend/frontend)
-
-控制器需统一继承 `common\components\AddonsBaseController`  
-
-### 开发
-
-完全可以根据Yii2正常的开发流程去开发对应的控制器、视图、插件内的应用
+# 相关组件
+- [wed-loading](/docs/components/wed-loading.md)
