@@ -44,7 +44,7 @@ import { api } from "vue-wed-dev";
 #### 参数
 
 | 参数名 | 类型 | 默认值 | 是否必填 | 描述 |
-| --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 | title | String | '提示' | 可选 | 模态框标题 |
 | text | String |  | 必填 | 模态框内容 |
 | noCancel | Boolean | true | 可选 | 是否隐藏取消按钮 |
