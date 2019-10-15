@@ -46,7 +46,7 @@ export default {
   methods: {
     showModal() {
       api.showModal({
-        text: "ceshi",
+        text: "测试",
         noCancel: false,
         success() {
           console.log('点击成功');
@@ -66,4 +66,5 @@ export default {
 ```
 
 #### [相关方法](/docs/mothods/modal.md)
+- modalInit
 - showModal

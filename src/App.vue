@@ -27,13 +27,13 @@ export default {
   methods: {
     showModal() {
       api.showModal({
-        text: "ceshi",
+        text: "测试",
         noCancel: false,
         success() {
-          console.log(123);
+          console.log('点击成功');
         },
         fail() {
-          console.log(456);
+          console.log('点击失败');
         }
       });
     },

@@ -57,4 +57,5 @@ export default {
 ```
 
 #### [相关方法](/docs/mothods/toast.md)
+- toastInit
 - showToast

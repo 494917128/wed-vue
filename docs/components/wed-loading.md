@@ -60,5 +60,6 @@ export default {
 ```
 
 #### [相关方法](/docs/mothods/loading.md)
+- loadingInit
 - showLoading
 - hideLoading
