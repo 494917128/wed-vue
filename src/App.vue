@@ -6,7 +6,7 @@
 
     <img alt="Vue logo" src="./assets/logo.png" />
 
-    <div @click="showmodal">显示模态框</div>
+    <div @click="showModal">显示模态框</div>
     <div @click="showToast">显示提示框</div>
     <div @click="showLoading">显示loading框</div>
   </div>
@@ -25,7 +25,7 @@ export default {
     };
   },
   methods: {
-    showmodal() {
+    showModal() {
       api.showModal({
         text: "ceshi",
         noCancel: false,

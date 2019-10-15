@@ -1,8 +1,4 @@
 
-# Vue-Wed-Dev
-
-基于 Vue-cli，个人封装的组件/方法。
-
 # code
 
 #### main.js
@@ -63,4 +59,6 @@ export default {
 </script>
 ```
 
-#### [相关方法](/doc/mothods/modal.md)
+#### [相关方法](/docs/mothods/loading.md)
+- showLoading
+- hideLoading
