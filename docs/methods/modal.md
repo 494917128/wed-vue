@@ -39,9 +39,10 @@ import { api } from "vue-wed-dev";
 ...
 ```
 
-## api.modalInit(content)
+## api.modalInit(Object object)
 
 #### 参数
+##### Object object
 
 | 参数名 | 类型 | 默认值 | 是否必填 | 描述 |
 | --- | --- | --- | --- | --- |
