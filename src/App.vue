@@ -9,6 +9,7 @@
     <div @click="showModal">显示模态框</div>
     <div @click="showToast">显示提示框</div>
     <div @click="showLoading">显示loading框</div>
+    <div @click="setDate">获取当前时间：{{date}}</div>
   </div>
 </template>
 
@@ -21,7 +22,8 @@ export default {
     return {
       modal: {},
       toast: {},
-      loading: {}
+      loading: {},
+      date: '',
     };
   },
   methods: {
@@ -45,7 +47,10 @@ export default {
       setTimeout(()=>{
         api.hideLoading();
       },1500)
-    }
+    },
+    setDate() {
+      this.date = api.date('Y-m-d H:i:s');
+    },
   },
 
   created() {
