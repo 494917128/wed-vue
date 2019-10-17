@@ -22,7 +22,7 @@ npm install vue-wed-dev --save
 - [模态框](/docs/methods/modal.md)
 - [提示框](/docs/methods/toast.md)
 - [loading框](/docs/methods/loading.md)
-- [date](/docs/methods/date.md)
+- [时间戳转换为时间格式](/docs/methods/date.md)
 
 # 作者
 王尔迪
