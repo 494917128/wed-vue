@@ -46,6 +46,6 @@
 
 ``` bash
 ...
-  console.log(api.date('Y-m-d H:i:s');
+  console.log(api.date('Y-m-d H:i:s'));
 ...
 ```
